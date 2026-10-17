@@ -12,24 +12,27 @@
     --warn:#ffb020; --accent:#4d8dff;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-  html,body{margin:0;height:100%}
+  html,body{margin:0;min-height:100%}
   body{
     background:radial-gradient(1200px 600px at 50% -10%,#182033 0%,var(--bg) 60%);
     color:var(--txt);font:15px/1.5 -apple-system,BlinkMacSystemFont,"PingFang SC",
     "Microsoft YaHei",system-ui,sans-serif;
     display:flex;justify-content:center;padding:18px 14px 28px;
+    min-height:100vh;
   }
   .app{width:100%;max-width:920px;display:flex;flex-direction:column;gap:14px}
 
-  header{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  header{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;flex-shrink:0}
   h1{font-size:19px;margin:0;letter-spacing:.5px;font-weight:650}
   h1 span{color:var(--accent)}
   .tag{font-size:12px;color:var(--dim);border:1px solid var(--line);
        padding:2px 8px;border-radius:99px}
 
+  /* flex-shrink:0 —— 否则窗口矮的时候 canvas 会被压扁成一条线 */
   .stage{position:relative;background:var(--panel);border:1px solid var(--line);
-         border-radius:16px;overflow:hidden}
+         border-radius:16px;overflow:hidden;flex:0 0 auto}
   canvas{display:block;width:100%;height:340px}
+  @media (max-width:600px){ canvas{height:280px} }
 
   .banner{position:absolute;inset:0;display:flex;align-items:center;
     justify-content:center;flex-direction:column;gap:10px;background:rgba(10,12,17,.72);
